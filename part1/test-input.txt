@@ -1,0 +1,13 @@
+alpha     1.2.3.4      10.3
+beta      alpha         5.2
+1.2.3.4   18811001100   5.0
+beta      alpha         3
+1.2.3.4   18811001100   52
+alpha     1.2.3.4      30.1
+alpha     1.2.3.4      1.2.3.4
+# invalid input
+alpha     1.2.3.4      1.2.3.4
+# trailing characters
+alpha     1.2.3.4      30.1  30.1
+# missing fields
+alpha     1.2.3.4
