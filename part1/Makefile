@@ -15,3 +15,15 @@ test: Hw2Part1.jar
 	hdfs dfs -rm -f -r /hw2/output
 	hadoop jar ./Hw2Part1.jar /hw2/test-input.txt /hw2/output
 	hdfs dfs -cat '/hw2/output/part-*'
+
+input: Hw2Part1.jar
+	hdfs dfs -copyFromLocal -f part1-input /hw2/
+	hdfs dfs -rm -f -r /hw2/output
+	hadoop jar ./Hw2Part1.jar /hw2/part1-input/input_0 /hw2/output
+	hdfs dfs -cat '/hw2/output/part-*'
+	hdfs dfs -rm -f -r /hw2/output
+	hadoop jar ./Hw2Part1.jar /hw2/part1-input/input_1 /hw2/output
+	hdfs dfs -cat '/hw2/output/part-*'
+	hdfs dfs -rm -f -r /hw2/output
+	hadoop jar ./Hw2Part1.jar /hw2/part1-input/input_2 /hw2/output
+	hdfs dfs -cat '/hw2/output/part-*'
