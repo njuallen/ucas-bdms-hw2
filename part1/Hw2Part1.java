@@ -42,6 +42,15 @@ import org.apache.hadoop.mapred.TextOutputFormat;
 import org.apache.hadoop.util.GenericOptionsParser;
 
 
+/**
+ * Read a log file from HDFS.
+ * Do some accounting and store results back to HDFS.
+ * compile: make all
+ * run: make run
+ * @author  Zhigang Liu
+ * @version 1.0
+ * @since   2019-04-12
+ */
 public class Hw2Part1 {
 
   public static class TokenizerMapper
@@ -210,6 +219,10 @@ public class Hw2Part1 {
   }
 
 
+/**
+ * Implemented our own writable class
+ * This is <src, dest> pair, and can be used as a key in map reduce
+ */
   public static class SrcDestWritable implements WritableComparable<SrcDestWritable> {
     private Text src, dest;
 
@@ -259,6 +272,14 @@ public class Hw2Part1 {
 
     @Override
     public String toString() {
+      // should not eliminate the space in the string
+      // since we use this toString method to compare and hash
+      // assume you leave out the space and there are two pairs
+      // first pair: "a," and "b"
+      // second pair: "a" and ",b"
+      // then their toString results will be "<a,,b>" and "<a,,b>"
+      // and compareTo will returns 0, these two pairs are equal
+      // this is obviously wrong
       return String.format("<%s, %s>", getSrc(), getDest());
     }
   }
