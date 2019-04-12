@@ -62,7 +62,7 @@ public class Hw2Part1 {
         throws IOException, InterruptedException {
 
         // debug
-        System.out.println("Mapper Input: Value = " + value.toString());
+        // System.out.println("Mapper Input: Value = " + value.toString());
 
         ArrayList<String> tokens = tokenize(value.toString());
 
@@ -81,8 +81,10 @@ public class Hw2Part1 {
           context.write(outputKey, outputValue);
 
           // debug
+          /*
           System.out.println("Mapper Output: Key = " + outputKey.toString() +
               "Value = " + outputValue.toString());
+              */
         }
       }
   }
@@ -100,8 +102,10 @@ public class Hw2Part1 {
           sum += val.getSum();
         }
         StatisticsWritable outputValue = new StatisticsWritable(count, sum);
+        /*
         System.out.println("Combiner Output: Key = " + key.toString() +
             "Value = " + outputValue.toString());
+            */
         context.write(key, outputValue);
       }
   }
@@ -120,8 +124,10 @@ public class Hw2Part1 {
         }
         Text outputKey = new Text(String.format("%s %s", key.getSrc(), key.getDest()));
         Text outputValue = new Text(String.format("%d %.3f", count, sum / count));
+        /*
         System.out.println("Reducer Output: Key = " + outputKey.toString() +
             "Value = " + outputValue.toString());
+            */
         context.write(outputKey, outputValue);
       }
   }
